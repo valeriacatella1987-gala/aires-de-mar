@@ -1,0 +1,9 @@
+# Credenciales — NUNCA subir
+CREDENTIALS.md
+.env
+.env.*
+.vercel
+
+# OS / editor
+Thumbs.db
+.DS_Store
