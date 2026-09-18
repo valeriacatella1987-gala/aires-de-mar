@@ -7,3 +7,5 @@ CREDENTIALS.md
 # OS / editor
 Thumbs.db
 .DS_Store
+
+.vercel

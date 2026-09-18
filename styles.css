@@ -185,10 +185,11 @@ h1, h2, h3 { line-height: 1.05; font-weight: 500; }
 .svc {
   position: relative; height: 420px; border-radius: var(--radius-lg); overflow: hidden;
   scroll-snap-align: start; display: flex; align-items: flex-end; color: #fff;
+  isolation: isolate;
 }
-.svc img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2; }
-.svc::after { content:""; position:absolute; inset:0; z-index:-1; background: linear-gradient(180deg, rgba(44,74,56,.15), rgba(28,50,38,.82)); }
-.svc__label { padding: 1.3rem; }
+.svc img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+.svc::after { content:""; position:absolute; inset:0; z-index:1; background: linear-gradient(180deg, rgba(44,74,56,.15), rgba(28,50,38,.82)); }
+.svc__label { position: relative; z-index: 2; padding: 1.3rem; }
 .svc__label b { display:block; font-size:1.15rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600; }
 .svc__label span { font-size:.9rem; opacity:.9; }
 
@@ -220,6 +221,7 @@ h1, h2, h3 { line-height: 1.05; font-weight: 500; }
 .footer a { opacity: .85; display:block; padding:.2rem 0; }
 .footer a:hover { opacity: 1; }
 .footer__bottom { text-align:center; padding: 1.5rem 0 6rem; font-size:.82rem; opacity:.6; }
+.footer__bottom a { display: inline; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- Floating WhatsApp ---------- */
 .wa-float {
