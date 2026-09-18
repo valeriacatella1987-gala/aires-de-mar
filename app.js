@@ -2,19 +2,25 @@
    Aires de Mar — interacciones
    ============================================================ */
 
-/* 👉 ÚNICO lugar para cambiar el número de WhatsApp.
-   Formato internacional sin +, sin 0 y sin 15.
-   Ejemplo AR: país 54 + área 3368 + número → "543368779999"
-   ponytail: el 03368-779999 es la línea fija publicada;
-   confirmá con el cliente el CELULAR real de WhatsApp antes de publicar. */
-const WA_NUMBER = "543368779999";
+/* 👉 ÚNICO lugar para cambiar el número de WhatsApp (botón flotante). */
+const WA_NUMBER = "5492255625427";
 
-// Convierte todos los [data-wa] en enlaces de WhatsApp con mensaje prellenado
+// Botón flotante de WhatsApp: único [data-wa] que queda en el sitio
 document.querySelectorAll("[data-wa]").forEach((el) => {
   const msg = encodeURIComponent(el.getAttribute("data-wa") || "");
   el.setAttribute("href", `https://wa.me/${WA_NUMBER}?text=${msg}`);
   el.setAttribute("target", "_blank");
   el.setAttribute("rel", "noopener");
+});
+
+/* Mail de contacto, armado en JS (no queda como texto plano en el HTML)
+   para dificultarle el trabajo a los bots que rastrean mailto: en el código fuente. */
+const EMAIL_USER = "airesdemarpampas";
+const EMAIL_DOMAIN = "gmail.com";
+document.querySelectorAll("[data-mail]").forEach((el) => {
+  const address = `${EMAIL_USER}@${EMAIL_DOMAIN}`;
+  const subject = encodeURIComponent(el.getAttribute("data-mail") || "Consulta - Aires de Mar");
+  el.setAttribute("href", `mailto:${address}?subject=${subject}`);
 });
 
 // Nav: fondo al hacer scroll

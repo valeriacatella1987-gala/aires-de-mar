@@ -20,14 +20,17 @@
 
 <!-- ============ NAV ============ -->
 <header class="nav" id="nav">
-  <a class="nav__brand" href="#top">Aires de Mar</a>
+  <a class="nav__brand" href="#top" aria-label="Aires de Mar — inicio">
+    <img class="nav__logo nav__logo--white" src="img/logo-white.png" alt="Aires de Mar" />
+    <img class="nav__logo nav__logo--color" src="img/logo-color.png" alt="Aires de Mar" />
+  </a>
   <nav class="nav__links" id="navLinks" aria-label="Navegación principal">
     <a href="#casas">Casas</a>
     <a href="#servicios">Servicios</a>
     <a href="#galeria">Galería</a>
     <a href="#ubicacion">Ubicación</a>
-    <a class="btn btn--wa" data-wa="Hola! Quería consultar por las cabañas de Aires de Mar 🌲🌊">
-      WhatsApp <span class="arrow">›</span>
+    <a class="btn btn--wa" data-mail="Consulta - Aires de Mar">
+      Consultá <span class="arrow">›</span>
     </a>
   </nav>
   <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
@@ -42,7 +45,7 @@
     <h1 class="display">Disfrutá de la<br />tranquilidad del bosque</h1>
     <p class="hero__sub">Cabañas de playa en Mar de las Pampas, donde la arquitectura se integra a la naturaleza sin perder la intimidad que buscás.</p>
     <div class="hero__cta">
-      <a class="btn btn--wa" data-wa="Hola! Quería consultar disponibilidad en Aires de Mar 🌲🌊">Consultá por WhatsApp <span class="arrow">›</span></a>
+      <a class="btn btn--wa" data-mail="Consulta de disponibilidad - Aires de Mar">Consultá disponibilidad <span class="arrow">›</span></a>
       <a class="btn btn--light" href="#casas">Ver las casas <span class="arrow">›</span></a>
     </div>
   </div>
@@ -90,7 +93,7 @@
     <article class="svc"><img src="img/interior2.jpeg" alt="Desayuno" loading="lazy" /><div class="svc__label"><b>Desayuno</b><span>Café, té, pan, budines caseros y más, provistos a diario en tu cabaña.</span></div></article>
     <article class="svc"><img src="img/piscina1.jpeg" alt="Piscina y solárium" loading="lazy" /><div class="svc__label"><b>Piscina & Solárium</b><span>Piscina y solárium descubiertos para toda la familia.</span></div></article>
     <article class="svc"><img src="img/parque1.jpeg" alt="Parque y parrilla" loading="lazy" /><div class="svc__label"><b>Parrilla & Parque</b><span>Parrilla individual y sector de parque propio junto a la cabaña.</span></div></article>
-    <article class="svc"><img src="img/parque2.jpeg" alt="Blancos y limpieza" loading="lazy" /><div class="svc__label"><b>Blancos & Limpieza</b><span>Cambio de toallas y sábanas + servicio de limpieza durante tu estadía.</span></div></article>
+    <article class="svc"><img src="img/parque2.jpeg" alt="Blancos y limpieza" loading="lazy" /><div class="svc__label"><b>Blancos & Limpieza</b><span>Limpieza diaria de la cabaña + cambio de toallas día por medio y sábanas a mitad de semana.</span></div></article>
     <article class="svc"><img src="img/casa4.jpeg" alt="Juegos infantiles" loading="lazy" /><div class="svc__label"><b>Juegos infantiles</b><span>Espacio de juegos para los más chicos dentro del predio.</span></div></article>
   </div>
 </section>
@@ -121,6 +124,8 @@
       <li>Parrilla individual y sector de parque</li>
       <li>Piscina y solárium descubiertos</li>
       <li>Estacionamiento descubierto junto a la cabaña</li>
+      <li>Fundas de almohada anticovid sanitizables</li>
+      <li>Se aceptan mascotas pequeñas/medianas bien educadas</li>
     </ul>
   </div>
 </section>
@@ -136,8 +141,8 @@
           <div class="check"><b>15 hs</b><span>Check-in</span></div>
           <div class="check"><b>10 hs</b><span>Check-out estricto</span></div>
         </div>
-        <p style="margin-top:1.4rem;max-width:48ch">Desayuno provisto a diario · Cambio de blancos durante la semana · Limpieza según temporada · No se permite fumar dentro de las cabañas.</p>
-        <a class="btn btn--wa" style="margin-top:1.6rem" data-wa="Hola! Quería reservar en Aires de Mar. Fechas y cantidad de personas: ">Reservá ahora <span class="arrow">›</span></a>
+        <p style="margin-top:1.4rem;max-width:48ch">Desayuno provisto a diario · Limpieza diaria de la cabaña · Cambio de toallas día por medio y de sábanas a mitad de semana · No se permite fumar dentro de las cabañas · Aceptamos mascotas pequeñas/medianas bien educadas (no en el solárium, no solas en la cabaña).</p>
+        <a class="btn btn--wa" style="margin-top:1.6rem" data-mail="Reserva - Aires de Mar">Reservá ahora <span class="arrow">›</span></a>
       </div>
       <div class="stack-imgs reveal">
         <img src="img/interior3.jpeg" alt="Interior de la cabaña" loading="lazy" />
@@ -194,7 +199,7 @@
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="wrap">
-    <div class="footer__mark display">Aires de Mar</div>
+    <img class="footer__mark" src="img/logo-white.png" alt="Aires de Mar" />
     <div class="footer__grid">
       <div>
         <h4>Explorar</h4>
@@ -206,7 +211,7 @@
       <div>
         <h4>Contacto</h4>
         <a href="tel:+543368779999">03368-77-9999</a>
-        <a data-wa="Hola! Quería consultar por Aires de Mar">WhatsApp</a>
+        <a data-mail="Consulta - Aires de Mar">Escribinos por mail</a>
       </div>
       <div>
         <h4>Dónde estamos</h4>
@@ -230,7 +235,7 @@
     <b>¿Listo para tu escapada?</b>
     <span>Consultá disponibilidad y precios sin cargo</span>
   </div>
-  <a class="btn btn--wa" data-wa="Hola! Quería consultar disponibilidad y precios en Aires de Mar 🌲🌊">Reservar <span class="arrow">›</span></a>
+  <a class="btn btn--wa" data-mail="Consulta de disponibilidad y precios - Aires de Mar">Reservar <span class="arrow">›</span></a>
 </div>
 
 <script src="app.js"></script>
