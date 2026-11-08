@@ -3,7 +3,7 @@
 import json, os, sys, html
 
 ROOT = sys.argv[1]
-BASE = "https://aires-de-mar.vercel.app"  # cambiar a https://airesdemarpampas.com.ar cuando ande el dominio
+BASE = "https://airesdemarpampas.com.ar"
 FECHA = "2026-11-08"
 FECHA_TXT = "8 de noviembre de 2026"
 NEGOCIO = BASE + "/#negocio"
