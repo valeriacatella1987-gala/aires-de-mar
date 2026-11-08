@@ -138,7 +138,7 @@
 <section class="section" id="casas">
   <div class="wrap">
     <div class="split">
-      <div class="bento unveil reveal">
+      <div class="bento bento--casas unveil reveal">
         <figure class="b-big"><img src="img/casa1.jpeg" alt="Living y comedor de una cabaña, con ventanales al parque" width="1400" height="1050" loading="lazy" /></figure>
         <figure class="b-wide"><img src="img/interior1.jpeg" alt="Living amplio con sofá-cama" width="1050" height="1400" loading="lazy" /></figure>
         <figure><img src="img/casa2.jpeg" alt="Living y comedor luminoso" width="1050" height="1400" loading="lazy" /></figure>
@@ -322,7 +322,7 @@
           <li><span aria-hidden="true">📍</span> Av. del Plata y El Palmar (continuación de Querandíes)</li>
           <li><span aria-hidden="true">🌊</span> A 9 cuadras de la playa</li>
           <li><span aria-hidden="true">🌲</span> En pleno bosque, a 6 cuadras del centro comercial</li>
-          <li><span aria-hidden="true">💬</span> <a data-wa="Hola! Quería consultar por las cabañas de Aires de Mar">WhatsApp +54 9 2255 62-5427</a></li>
+          <li><span aria-hidden="true">💬</span> <a data-wa="Hola! Vi la web y quería consultar por las cabañas de Aires de Mar">WhatsApp +54 9 2255 62-5427</a></li>
         </ul>
         <a class="btn btn--mail" target="_blank" rel="noopener noreferrer"
            href="https://www.google.com/maps/dir/?api=1&amp;destination=Caba%C3%B1as%20Aires%20de%20Mar%2C%20Mar%20de%20las%20Pampas">Cómo llegar <span class="arrow">›</span></a>
@@ -344,7 +344,7 @@
     <h2 class="display">Tu próxima escapada empieza <em>entre el bosque y el mar</em></h2>
     <div class="footer__actions">
       <a class="btn btn--gold" data-mail="Reserva - Aires de Mar">Pedí tu presupuesto <span class="arrow">›</span></a>
-      <a class="btn btn--light" data-wa="Hola! Quería consultar por las cabañas de Aires de Mar">WhatsApp <span class="arrow">›</span></a>
+      <a class="btn btn--light" data-wa="Hola! Vi la web y quería consultar por las cabañas de Aires de Mar">WhatsApp <span class="arrow">›</span></a>
     </div>
   </div>
   <div class="wrap footer__grid">
@@ -362,7 +362,7 @@
     </div>
     <div>
       <h3 class="footer__h">Contacto</h3>
-      <a data-wa="Hola! Quería consultar por las cabañas de Aires de Mar">WhatsApp</a>
+      <a data-wa="Hola! Vi la web y quería consultar por las cabañas de Aires de Mar">WhatsApp</a>
       <a data-mail="Consulta - Aires de Mar">Mail</a>
       <a href="https://www.instagram.com/airesdemarpampas/" target="_blank" rel="noopener noreferrer">Instagram</a>
     </div>
@@ -386,8 +386,23 @@
   <span class="lb-count"></span>
 </dialog>
 
+
+<!-- ============ ELEGIR CÓMO CONSULTAR ============ -->
+<dialog class="contact" id="contact" aria-labelledby="contactTitle">
+  <button class="contact__close" type="button" aria-label="Cerrar">✕</button>
+  <span class="eyebrow">Consultá sin cargo</span>
+  <h2 class="display" id="contactTitle">¿Cómo preferís escribirnos?</h2>
+  <p>Te respondemos nosotros, los dueños.</p>
+  <a class="btn btn--gold contact__opt" data-wa="Hola! Vi la web y quería consultar por las cabañas de Aires de Mar">Por WhatsApp <span class="arrow">›</span></a>
+  <a class="btn btn--mail contact__opt" id="gmailLink" target="_blank" rel="noopener noreferrer">Por mail (Gmail) <span class="arrow">›</span></a>
+  <div class="contact__more">
+    <a class="contact__alt" data-mail="Consulta - Aires de Mar">Usar mi app de correo</a>
+    <button class="contact__copy" type="button">Copiar el mail</button>
+  </div>
+</dialog>
+
 <!-- ============ FLOTANTES ============ -->
-<a class="wa-float" aria-label="Escribinos por WhatsApp" data-wa="Hola! Quería consultar por las cabañas de Aires de Mar 🌲🌊">
+<a class="wa-float" aria-label="Escribinos por WhatsApp" data-wa="Hola! Vi la web y quería consultar por las cabañas de Aires de Mar">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.05 24l1.7-6.2A11.9 11.9 0 1112 24a11.9 11.9 0 01-5.9-1.6L.05 24zM6.6 20.1l.4.2a9.9 9.9 0 005 1.4A9.9 9.9 0 102.1 12c0 1.8.5 3.5 1.4 5l.2.4-1 3.7 3.9-1zm11.4-5.5c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.1-.3.2-.5.1a8 8 0 01-2.4-1.5 9 9 0 01-1.6-2c-.2-.3 0-.4.1-.6l.5-.5.3-.5v-.5c0-.1-.6-1.5-.8-2-.2-.5-.5-.5-.6-.5h-.5c-.2 0-.5 0-.7.3a3 3 0 00-1 2.2c0 1.3 1 2.6 1.1 2.8.1.2 1.9 3 4.6 4.2.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
 </a>
 

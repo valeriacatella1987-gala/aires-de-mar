@@ -14,9 +14,34 @@ document.querySelectorAll("[data-wa]").forEach((el) => {
 /* Mail armado en JS: no queda como texto plano para los bots que rastrean mailto:. */
 const EMAIL_USER = "airesdemarpampas";
 const EMAIL_DOMAIN = "gmail.com";
+const EMAIL = `${EMAIL_USER}@${EMAIL_DOMAIN}`;
 document.querySelectorAll("[data-mail]").forEach((el) => {
   const subject = encodeURIComponent(el.getAttribute("data-mail") || "Consulta - Aires de Mar");
-  el.setAttribute("href", `mailto:${EMAIL_USER}@${EMAIL_DOMAIN}?subject=${subject}`);
+  el.setAttribute("href", `mailto:${EMAIL}?subject=${subject}`);
+});
+
+/* Los botones "Consultá" abrían solo mailto:, que no hace nada si la persona no tiene
+   una app de correo configurada (la mayoría en el celu). Ahora abren una ventanita
+   para elegir WhatsApp o Gmail; mailto queda como opción secundaria. */
+const contact = document.getElementById("contact");
+const gmailLink = document.getElementById("gmailLink");
+const copyBtn = contact.querySelector(".contact__copy");
+document.querySelectorAll("[data-mail]:not(.contact__alt)").forEach((el) => {
+  el.addEventListener("click", (e) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(el.getAttribute("data-mail") || "Consulta - Aires de Mar");
+    gmailLink.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=${subject}`;
+    contact.querySelector(".contact__alt").href = `mailto:${EMAIL}?subject=${subject}`;
+    copyBtn.textContent = "Copiar el mail";
+    contact.showModal();
+  });
+});
+contact.querySelector(".contact__close").addEventListener("click", () => contact.close());
+contact.addEventListener("click", (e) => { if (e.target === contact) contact.close(); });
+contact.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => contact.close()));
+copyBtn.addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText(EMAIL); copyBtn.textContent = "¡Copiado!"; }
+  catch { copyBtn.textContent = EMAIL; }
 });
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -98,7 +123,12 @@ new IntersectionObserver(([e]) => document.body.classList.toggle("at-end", e.isI
 const lb = document.getElementById("lightbox");
 const lbImg = lb.querySelector("img");
 const lbCount = lb.querySelector(".lb-count");
-const shots = [...document.querySelectorAll(".gallery figure")];
+const shots = [...document.querySelectorAll(".bento figure")]; /* casas + galería */
+shots.forEach((fig) => {
+  fig.setAttribute("tabindex", "0");
+  fig.setAttribute("role", "button");
+  if (!fig.hasAttribute("aria-label")) fig.setAttribute("aria-label", `Ampliar foto: ${fig.querySelector("img").alt}`);
+});
 let current = 0;
 const show = (i) => {
   current = (i + shots.length) % shots.length;
