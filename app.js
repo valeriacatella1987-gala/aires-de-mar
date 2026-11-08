@@ -248,23 +248,101 @@ chat.querySelector(".chat__close").addEventListener("click", () => abrirChat(fal
 chat.addEventListener("keydown", (e) => { if (e.key === "Escape") abrirChat(false); });
 input.addEventListener("input", () => { input.style.height = "auto"; input.style.height = `${input.scrollHeight}px`; });
 input.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); } });
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const text = input.value.trim();
-  if (!text) return;
-  const btn = form.querySelector("button");
-  btn.disabled = true;
-  burbuja(text, "me"); guardar({ text, who: "me" });
-  input.value = ""; input.style.height = "auto";
+/* manda texto, foto o audio por el mismo camino; el archivo viaja en base64 */
+const enviar = async (payload) => {
   escribiendo(true);
   try {
-    const r = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sid, text }) });
+    const r = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sid, ...payload }) });
     if (!r.ok) throw new Error(String(r.status));
     esperarRespuesta();
   } catch {
     escribiendo(false);
     burbuja("No pudimos enviar tu mensaje. Probá de nuevo o escribinos por WhatsApp.", "bot");
-  } finally { btn.disabled = false; }
+  }
+};
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const text = input.value.trim();
+  if (!text) return;
+  const btn = form.querySelector(".chat__send");
+  btn.disabled = true;
+  burbuja(text, "me"); guardar({ text, who: "me" });
+  input.value = ""; input.style.height = "auto";
+  await enviar({ text });
+  btn.disabled = false;
 });
+
+const aBase64 = (blob) => new Promise((ok, mal) => {
+  const fr = new FileReader();
+  fr.onload = () => ok(String(fr.result).split(",")[1] || "");
+  fr.onerror = mal;
+  fr.readAsDataURL(blob);
+});
+const burbujaFoto = (url, texto) => {
+  const li = document.createElement("li");
+  li.className = "chat__me";
+  const img = document.createElement("img");
+  img.src = url; img.alt = "Foto que enviaste";
+  li.append(img, texto || "");
+  log.insertBefore(li, typing && typing.isConnected ? typing : null);
+  log.scrollTop = log.scrollHeight;
+};
+
+/* foto: se achica en el navegador (máx. 1280 px) para que viaje liviana */
+const fileIn = document.getElementById("chatFile");
+document.getElementById("chatAttach").addEventListener("click", () => fileIn.click());
+fileIn.addEventListener("change", async () => {
+  const f = fileIn.files[0];
+  fileIn.value = "";
+  if (!f || !f.type.startsWith("image/")) return;
+  try {
+    const bmp = await createImageBitmap(f);
+    const k = Math.min(1, 1280 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement("canvas");
+    c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+    c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+    const blob = await new Promise((ok) => c.toBlob(ok, "image/jpeg", 0.82));
+    const text = input.value.trim();
+    input.value = ""; input.style.height = "auto";
+    burbujaFoto(URL.createObjectURL(blob), text);
+    guardar({ text: `📷 Foto${text ? ` · ${text}` : ""}`, who: "me" });
+    await enviar({ kind: "image", mime: "image/jpeg", media: await aBase64(blob), text });
+  } catch {
+    burbuja("No pudimos leer esa foto. Probá con otra o escribinos.", "bot");
+  }
+});
+
+/* audio: se graba en el navegador (máx. 60 s) y Vale lo transcribe */
+const mic = document.getElementById("chatMic");
+if (navigator.mediaDevices?.getUserMedia && window.MediaRecorder) {
+  mic.hidden = false;
+  let rec = null, partes = [], corte = null, inicio = 0;
+  const parar = () => { if (rec && rec.state === "recording") rec.stop(); };
+  mic.addEventListener("click", async () => {
+    if (rec && rec.state === "recording") return parar();
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      rec = new MediaRecorder(stream);
+      partes = []; inicio = Date.now();
+      rec.ondataavailable = (ev) => ev.data.size && partes.push(ev.data);
+      rec.onstop = async () => {
+        clearTimeout(corte);
+        stream.getTracks().forEach((t) => t.stop());
+        mic.setAttribute("aria-pressed", "false"); mic.setAttribute("aria-label", "Grabar un audio");
+        const seg = Math.round((Date.now() - inicio) / 1000);
+        if (seg < 1 || !partes.length) return;
+        const blob = new Blob(partes, { type: rec.mimeType || "audio/webm" });
+        const mime = (blob.type || "audio/webm").split(";")[0];
+        burbuja(`🎤 Audio (${seg} s)`, "me"); guardar({ text: `🎤 Audio (${seg} s)`, who: "me" });
+        await enviar({ kind: "audio", mime, media: await aBase64(blob) });
+      };
+      rec.start();
+      corte = setTimeout(parar, 60000);
+      mic.setAttribute("aria-pressed", "true"); mic.setAttribute("aria-label", "Terminar y enviar el audio");
+    } catch {
+      burbuja("No pudimos usar el micrófono. Revisá el permiso del navegador o escribí tu consulta.", "bot");
+    }
+  });
+}
 
 document.getElementById("year").textContent = new Date().getFullYear();

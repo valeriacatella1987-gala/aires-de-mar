@@ -6,6 +6,7 @@ const crypto = require("crypto");
 const N8N = process.env.AIRES_N8N_URL; // https://<n8n>/webhook
 const SECRET = process.env.AIRES_WEB_SECRET;
 const MAX_TEXT = 600;
+const MAX_MEDIA = 3_000_000; // ~2,2 MB de archivo; el navegador ya achica la foto
 const LIMITE = 20; // mensajes por sesión cada 10 min (por instancia; freno básico al abuso)
 const uso = new Map();
 
@@ -34,14 +35,22 @@ module.exports = async (req, res) => {
   try {
     if (req.method === "POST") {
       const text = String(src.text || "").replace(/\s+/g, " ").trim().slice(0, MAX_TEXT);
-      if (!text) return res.status(400).json({ ok: false });
+      // adjunto opcional: foto (vision) o audio (Whisper), en base64, con tipo y tamaño acotados
+      const kind = src.kind === "image" || src.kind === "audio" ? src.kind : "";
+      const media = kind ? String(src.media || "") : "";
+      const mime = String(src.mime || "").toLowerCase();
+      if (kind) {
+        const okMime = kind === "image" ? /^image\/(jpeg|png|webp)$/.test(mime) : /^audio\/(webm|ogg|mp4|mpeg|wav|x-m4a|aac)$/.test(mime);
+        if (!okMime || !media || media.length > MAX_MEDIA || !/^[A-Za-z0-9+/=]+$/.test(media)) return res.status(400).json({ ok: false });
+      }
+      if (!text && !media) return res.status(400).json({ ok: false });
       const ahora = Date.now();
       const u = (uso.get(sid) || []).filter((t) => ahora - t < 600000);
       if (u.length >= LIMITE) return res.status(429).json({ ok: false });
       uso.set(sid, [...u, ahora]);
       const r = await fetch(`${N8N}/aires/web`, {
-        method: "POST", headers, body: JSON.stringify({ phone, text }),
-        signal: AbortSignal.timeout(8000),
+        method: "POST", headers, body: JSON.stringify(kind ? { phone, text, kind, mime, media } : { phone, text }),
+        signal: AbortSignal.timeout(kind ? 15000 : 8000),
       });
       return res.status(r.ok ? 200 : 502).json({ ok: r.ok });
     }
