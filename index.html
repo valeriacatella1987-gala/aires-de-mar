@@ -4,13 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Aires de Mar — Cabañas en Mar de las Pampas</title>
-<meta name="description" content="4 cabañas de playa en Mar de las Pampas, entre el bosque y el mar, para hasta 4 personas. Desayuno, limpieza diaria, piscina y parrilla propia. A 9 cuadras de la playa." />
-<meta name="theme-color" content="#2c4a38" />
+<meta name="description" content="4 cabañas de playa en Mar de las Pampas, entre el bosque y el mar, para hasta 4 personas. Desayuno casero, limpieza diaria, piscina y parrilla propia. 4,8 ★ en Google." />
+<meta name="theme-color" content="#1c3226" />
 <link rel="canonical" href="https://aires-de-mar.vercel.app/" />
 <meta property="og:site_name" content="Aires de Mar" />
 <meta property="og:locale" content="es_AR" />
 <meta property="og:title" content="Aires de Mar — Cabañas en Mar de las Pampas" />
-<meta property="og:description" content="Disfrutá de la tranquilidad del bosque. Cabañas con piscina, desayuno y limpieza diaria en Mar de las Pampas." />
+<meta property="og:description" content="Disfrutá de la tranquilidad del bosque. Cabañas con piscina, desayuno casero y limpieza diaria en Mar de las Pampas." />
 <meta property="og:url" content="https://aires-de-mar.vercel.app/" />
 <meta property="og:image" content="https://aires-de-mar.vercel.app/img/hero.jpeg" />
 <meta property="og:image:width" content="1400" />
@@ -26,22 +26,26 @@
 {
   "@context": "https://schema.org",
   "@type": "LodgingBusiness",
-  "name": "Aires de Mar",
-  "description": "Cabañas de playa en Mar de las Pampas, entre el bosque y el mar. Capacidad máxima 4 personas por cabaña.",
+  "name": "Cabañas Aires de Mar",
+  "description": "Cabañas de playa en Mar de las Pampas, entre el bosque y el mar. Capacidad máxima 4 personas por cabaña. Atendido por sus dueños.",
   "url": "https://aires-de-mar.vercel.app/",
   "image": "https://aires-de-mar.vercel.app/img/hero.jpeg",
   "telephone": "+54 9 2255 62-5427",
+  "email": "airesdemarpampas@gmail.com",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Av. del Plata y El Palmar",
     "addressLocality": "Mar de las Pampas",
+    "postalCode": "B7165",
     "addressRegion": "Buenos Aires",
     "addressCountry": "AR"
   },
   "geo": { "@type": "GeoCoordinates", "latitude": -37.3222014, "longitude": -57.0336878 },
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=Caba%C3%B1as%20Aires%20de%20Mar%20Mar%20de%20las%20Pampas",
   "checkinTime": "15:00",
   "checkoutTime": "10:00",
   "petsAllowed": true,
+  "smokingAllowed": false,
   "numberOfRooms": 4,
   "amenityFeature": [
     { "@type": "LocationFeatureSpecification", "name": "Piscina", "value": true },
@@ -49,13 +53,28 @@
     { "@type": "LocationFeatureSpecification", "name": "Wi-Fi", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Aire acondicionado", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Parrilla", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Estacionamiento", "value": true }
+    { "@type": "LocationFeatureSpecification", "name": "Estacionamiento", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Hidromasaje", "value": true }
   ],
   "sameAs": ["https://www.instagram.com/airesdemarpampas/"]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "¿Cómo reservo una cabaña en Aires de Mar?", "acceptedAnswer": { "@type": "Answer", "text": "Escribinos por mail con tus fechas, cuántas personas son y tus datos. Te respondemos con el presupuesto y los datos bancarios para la seña: 20% en temporada alta y 30% en temporada baja." } },
+    { "@type": "Question", "name": "¿Qué incluye el desayuno?", "acceptedAnswer": { "@type": "Answer", "text": "Café, té, chocolate, leche, manteca, dulces, pan para tostadas y budines caseros, provistos a diario en tu cabaña." } },
+    { "@type": "Question", "name": "¿Cuántas personas entran por cabaña?", "acceptedAnswer": { "@type": "Answer", "text": "Hasta 4 personas: dormitorio con sommier matrimonial y sofá-cama para 2 en el living. Si son 5 o más, consultanos por dos cabañas." } },
+    { "@type": "Question", "name": "¿Se aceptan mascotas?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, mascotas pequeñas o medianas bien educadas. No pueden estar en el solárium ni quedarse solas en la cabaña." } }
+  ]
+}
+</script>
 </head>
 <body>
+
+<div class="progress" aria-hidden="true"></div>
 
 <!-- ============ NAV ============ -->
 <header class="nav" id="nav">
@@ -67,10 +86,9 @@
     <a href="#casas">Casas</a>
     <a href="#servicios">Servicios</a>
     <a href="#galeria">Galería</a>
+    <a href="#opiniones">Opiniones</a>
     <a href="#ubicacion">Ubicación</a>
-    <a class="btn btn--mail" data-mail="Consulta - Aires de Mar">
-      Consultá <span class="arrow">›</span>
-    </a>
+    <a class="btn btn--mail" data-mail="Consulta - Aires de Mar">Consultá <span class="arrow">›</span></a>
   </nav>
   <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
     <span></span><span></span><span></span>
@@ -82,28 +100,45 @@
 <section class="hero" id="top">
   <div class="hero__bg"><img src="img/hero.jpeg" alt="Piscina y cabaña de Aires de Mar entre los árboles de Mar de las Pampas" width="1400" height="1050" fetchpriority="high" /></div>
   <div class="hero__inner">
-    <h1 class="display">Disfrutá de la<br />tranquilidad del bosque</h1>
-    <p class="hero__sub">Cabañas de playa en Mar de las Pampas, donde la arquitectura se integra a la naturaleza sin perder la intimidad que buscás.</p>
+    <a class="hero__badge" href="#opiniones"><b>★ 4,8</b> 60 opiniones en Google</a>
+    <h1 class="display">
+      <span class="line"><span>Disfrutá de la</span></span>
+      <span class="line"><span>tranquilidad <em>del bosque</em></span></span>
+    </h1>
+    <p class="hero__sub">Cuatro cabañas de playa en Mar de las Pampas, atendidas por sus dueños, donde la arquitectura se integra a la naturaleza sin perder intimidad.</p>
     <div class="hero__cta">
-      <a class="btn btn--mail" data-mail="Consulta de disponibilidad - Aires de Mar">Consultá disponibilidad <span class="arrow">›</span></a>
+      <a class="btn btn--gold" data-mail="Consulta de disponibilidad - Aires de Mar">Consultá disponibilidad <span class="arrow">›</span></a>
       <a class="btn btn--light" href="#casas">Ver las casas <span class="arrow">›</span></a>
     </div>
   </div>
-  <span class="hero__scroll" aria-hidden="true">Scroll ↓</span>
+  <span class="hero__scroll" aria-hidden="true"></span>
 </section>
 
-<!-- ============ CONCEPTO ============ -->
-<section class="section section--sand-50 concept">
-  <div class="wrap reveal">
-    <p class="display">Una nueva concepción arquitectónica: nuestras cabañas <span>interactúan con la naturaleza</span> incorporando el entorno.</p>
+<!-- ============ CONCEPTO + CIFRAS ============ -->
+<section class="section concept">
+  <div class="wrap">
+    <p class="display reveal">Una nueva concepción arquitectónica: nuestras cabañas <span>interactúan con la naturaleza</span> incorporando el entorno.</p>
+    <div class="stats stagger">
+      <div class="stat"><b data-count="4">4</b><span>cabañas independientes</span></div>
+      <div class="stat"><b data-count="9">9</b><span>cuadras hasta la playa</span></div>
+      <div class="stat"><b data-count="4.8" data-decimals="1">4,8</b><span>★ promedio en Google</span></div>
+      <div class="stat"><b data-count="60">60</b><span>opiniones de huéspedes</span></div>
+    </div>
   </div>
 </section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Bosque</span><span>Mar</span><span>Piscina</span><span>Desayuno casero</span><span>Parrilla propia</span><span>Silencio</span><span>Hidromasaje</span><span>Mascotas bienvenidas</span>
+    <span>Bosque</span><span>Mar</span><span>Piscina</span><span>Desayuno casero</span><span>Parrilla propia</span><span>Silencio</span><span>Hidromasaje</span><span>Mascotas bienvenidas</span>
+  </div>
+</div>
 
 <!-- ============ NUESTRAS CASAS ============ -->
 <section class="section" id="casas">
   <div class="wrap">
     <div class="split">
-      <div class="bento reveal">
+      <div class="bento unveil reveal">
         <figure class="b-big"><img src="img/casa1.jpeg" alt="Living y comedor de una cabaña, con ventanales al parque" width="1400" height="1050" loading="lazy" /></figure>
         <figure class="b-wide"><img src="img/interior1.jpeg" alt="Living amplio con sofá-cama" width="1050" height="1400" loading="lazy" /></figure>
         <figure><img src="img/casa2.jpeg" alt="Living y comedor luminoso" width="1050" height="1400" loading="lazy" /></figure>
@@ -113,34 +148,40 @@
         <span class="eyebrow">Nuestras casas</span>
         <h2 class="display">Espacio, luz y bosque para hasta 4 personas</h2>
         <p>
-          Son 4 cabañas independientes. Cada una tiene un dormitorio con sommier matrimonial, living con sofá-cama
-          amplio para 2 personas más, cocina completa y baño con hidromasaje. Pensadas para desconectar entre el bosque y el mar.
+          Son 4 cabañas independientes, diseñadas para que cada una tenga su intimidad. Dormitorio con sommier matrimonial,
+          living con sofá-cama amplio para 2 personas más, cocina equipada y baño con hidromasaje.
         </p>
-        <span class="cap">🛏️ Capacidad máxima: 4 personas por cabaña</span>
+        <div class="chips">
+          <span class="chip">🛏️ Hasta 4 personas</span>
+          <span class="chip">🛁 Hidromasaje</span>
+          <span class="chip">🔥 Parrilla propia</span>
+          <span class="chip">🐾 Pet friendly</span>
+        </div>
         <p class="note">¿Son 5 o más? Consultanos por dos cabañas.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ SERVICIOS (tira duotono) ============ -->
-<section class="section section--sand section--bleed" id="servicios">
+<!-- ============ SERVICIOS (oscuro) ============ -->
+<section class="section dark" id="servicios">
   <div class="wrap section__head reveal">
     <span class="eyebrow">Lo que incluye tu estadía</span>
     <h2 class="display">Servicios pensados para descansar</h2>
     <p>Nos ocupamos de los detalles para que solo tengas que disfrutar. Desayuno, blancos, limpieza y todo el confort, incluidos.</p>
   </div>
-  <div class="services-strip reveal">
-    <article class="svc"><img src="img/interior2.jpeg" alt="Cocina equipada de la cabaña" width="1050" height="1400" loading="lazy" /><div class="svc__label"><b>Desayuno</b><span>Café, té, pan, budines caseros y más, provistos a diario en tu cabaña.</span></div></article>
-    <article class="svc"><img src="img/piscina1.jpeg" alt="Piscina rodeada de árboles" width="1050" height="1400" loading="lazy" /><div class="svc__label"><b>Piscina & Solárium</b><span>Piscina y solárium descubiertos para toda la familia.</span></div></article>
-    <article class="svc"><img src="img/parque1.jpeg" alt="Parrilla individual bajo los árboles" width="1400" height="1050" loading="lazy" /><div class="svc__label"><b>Parrilla & Parque</b><span>Parrilla individual y sector de parque propio junto a la cabaña.</span></div></article>
-    <article class="svc"><img src="img/parque2.jpeg" alt="Dormitorio con ropa de cama" width="1050" height="1400" loading="lazy" /><div class="svc__label"><b>Blancos & Limpieza</b><span>Limpieza diaria de la cabaña + cambio de toallas día por medio y sábanas a mitad de semana.</span></div></article>
-    <article class="svc"><img src="img/casa4.jpeg" alt="Hamaca y tobogán en el parque" width="1400" height="1050" loading="lazy" /><div class="svc__label"><b>Juegos infantiles</b><span>Espacio de juegos para los más chicos dentro del predio.</span></div></article>
+  <div class="services-strip stagger">
+    <article class="svc"><img src="img/interior2.jpeg" alt="Cocina equipada de la cabaña" width="1050" height="1400" loading="lazy" /><div class="svc__label"><b>Desayuno casero</b><span>Café, té, chocolate, pan para tostadas, dulces y budines caseros, todos los días en tu cabaña.</span></div></article>
+    <article class="svc"><img src="img/piscina1.jpeg" alt="Piscina rodeada de árboles" width="1050" height="1400" loading="lazy" /><div class="svc__label"><b>Piscina y solárium</b><span>Descubiertos, a pasos de las cabañas y rodeados de pinos.</span></div></article>
+    <article class="svc"><img src="img/parque1.jpeg" alt="Parrilla individual bajo los árboles" width="1400" height="1050" loading="lazy" /><div class="svc__label"><b>Parrilla y parque</b><span>Parrilla individual y sector de parque propio junto a la cabaña.</span></div></article>
+    <article class="svc"><img src="img/parque2.jpeg" alt="Dormitorio con ropa de cama" width="1050" height="1400" loading="lazy" /><div class="svc__label"><b>Blancos y limpieza</b><span>Limpieza diaria, cambio de toallas día por medio y de sábanas a mitad de semana.</span></div></article>
+    <article class="svc"><img src="img/casa4.jpeg" alt="Hamaca y tobogán en el parque" width="1400" height="1050" loading="lazy" /><div class="svc__label"><b>Juegos para chicos</b><span>Espacio de juegos para los más chicos dentro del predio.</span></div></article>
   </div>
+  <p class="strip-hint" aria-hidden="true">Deslizá para ver más →</p>
 </section>
 
 <!-- ============ EQUIPAMIENTO ============ -->
-<section class="section section--sand-50">
+<section class="section">
   <div class="wrap">
     <div class="section__head reveal">
       <span class="eyebrow">Equipamiento</span>
@@ -150,7 +191,7 @@
       <li>Aire acondicionado frío-calor</li>
       <li>Calefacción a gas (tiro balanceado)</li>
       <li>Wi-Fi en interior y en el parque</li>
-      <li>TV 32" LED y TV por cable</li>
+      <li>TV LED y TV por cable</li>
       <li>Baño con hidromasaje</li>
       <li>Alarma monitoreada</li>
       <li>Vidrios dobles de seguridad laminados</li>
@@ -165,14 +206,43 @@
       <li>Parrilla individual y sector de parque</li>
       <li>Piscina y solárium descubiertos</li>
       <li>Estacionamiento descubierto junto a la cabaña</li>
-      <li>Fundas de almohada anticovid sanitizables</li>
-      <li>Se aceptan mascotas pequeñas/medianas bien educadas</li>
+      <li>Fundas de almohada sanitizables</li>
+      <li>Mascotas pequeñas/medianas bien educadas</li>
     </ul>
   </div>
 </section>
 
-<!-- ============ TERRACOTA: CHECK-IN + RESERVA ============ -->
-<section class="section tblock" id="reservas">
+<!-- ============ OPINIONES ============ -->
+<section class="section section--line" id="opiniones">
+  <div class="wrap">
+    <div class="reviews-top">
+      <div class="reveal">
+        <span class="eyebrow">Opiniones</span>
+        <h2 class="display">Un lugar familiar, atendido por sus dueños</h2>
+        <p>Valeria y Rodolfo reciben a cada huésped como en casa. Las cabañas las diseñó y construyó Facundo, su hijo arquitecto.</p>
+      </div>
+      <a class="score reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Caba%C3%B1as%20Aires%20de%20Mar%20Mar%20de%20las%20Pampas" target="_blank" rel="noopener noreferrer" aria-label="4,8 de 5 en Google, 60 opiniones. Ver en Google Maps">
+        <span class="score__num">4,8</span>
+        <span class="score__meta">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span>60 opiniones en Google</span>
+          <span>Ver todas ↗</span>
+        </span>
+      </a>
+    </div>
+    <div class="reviews stagger">
+      <figure class="review"><blockquote>“Atendido por sus dueños de manera súper cálida y cordial.”</blockquote><footer><span class="avatar" aria-hidden="true">LN</span><span><b>Leandro N.</b><span class="stars" aria-label="5 de 5">★★★★★</span></span></footer></figure>
+      <figure class="review"><blockquote>“La intimidad entre los aparts y la pileta son realmente únicos.”</blockquote><footer><span class="avatar" aria-hidden="true">SS</span><span><b>Santiago S.</b><span class="stars" aria-label="5 de 5">★★★★★</span></span></footer></figure>
+      <figure class="review"><blockquote>“La atención de Valeria un 10. Los budines muy buenos.”</blockquote><footer><span class="avatar" aria-hidden="true">DC</span><span><b>Diego C.</b><span class="stars" aria-label="5 de 5">★★★★★</span></span></footer></figure>
+      <figure class="review"><blockquote>“Excelente lugar para ir a descansar en un entorno muy tranquilo.”</blockquote><footer><span class="avatar" aria-hidden="true">MB</span><span><b>María Belén M.</b><span class="stars" aria-label="5 de 5">★★★★★</span></span></footer></figure>
+      <figure class="review"><blockquote>“Ambientes súper luminosos, el desayuno 10 puntos.”</blockquote><footer><span class="avatar" aria-hidden="true">JM</span><span><b>Juan Manuel P.</b><span class="stars" aria-label="5 de 5">★★★★★</span></span></footer></figure>
+      <figure class="review"><blockquote>“Cerca de la playa y del centro, con área para los más chiquitos.”</blockquote><footer><span class="avatar" aria-hidden="true">C</span><span><b>Cata</b><span class="stars" aria-label="5 de 5">★★★★★</span></span></footer></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESERVAS (oscuro) ============ -->
+<section class="section dark reserva" id="reservas">
   <div class="wrap">
     <div class="split">
       <div class="reveal">
@@ -183,16 +253,18 @@
           <div class="check"><b>10 hs</b><span>Check-out estricto</span></div>
         </div>
         <ul class="rules">
-          <li><b>Del 15 de diciembre al 10 de marzo:</b> estadías por semana completa (7, 14 o 21 noches), con ingreso sábado o domingo según la cabaña.</li>
+          <li><b>Del 15 de diciembre al 10 de marzo:</b> estadías por semana completa (7, 14 o 21 noches). Dos cabañas ingresan los sábados y dos los domingos.</li>
           <li><b>Resto del año:</b> estadías más cortas, a consultar.</li>
-          <li><b>Reserva con seña:</b> 20% en temporada alta, 30% en temporada baja.</li>
-          <li>Desayuno provisto a diario · Limpieza diaria (el lavado de vajilla no está incluido).</li>
-          <li>No se permite fumar dentro de las cabañas.</li>
-          <li>Mascotas pequeñas/medianas bien educadas: no en el solárium ni solas en la cabaña.</li>
+          <li>No se permite fumar dentro de las cabañas. El lavado de vajilla no está incluido.</li>
         </ul>
-        <a class="btn btn--mail mt-btn" data-mail="Reserva - Aires de Mar">Pedí tu presupuesto <span class="arrow">›</span></a>
+        <ol class="steps">
+          <li><span><b>Escribinos</b> con tus fechas, cuántas personas son y tus datos.</span></li>
+          <li><span>Te mandamos el <b>presupuesto y los datos bancarios</b> para la seña: 20% en temporada alta, 30% en temporada baja.</span></li>
+          <li><span>El saldo se abona al llegar: <b>en dólares (cotización blue) en temporada alta</b>, en efectivo en temporada baja.</span></li>
+        </ol>
+        <a class="btn btn--gold mt-btn" data-mail="Reserva - Aires de Mar">Pedí tu presupuesto <span class="arrow">›</span></a>
       </div>
-      <div class="stack-imgs reveal">
+      <div class="stack-imgs unveil reveal">
         <img src="img/interior3.jpeg" alt="Baño con hidromasaje" width="1050" height="1400" loading="lazy" />
         <img src="img/piscina2.jpeg" alt="Deck de la piscina con reposeras" width="1050" height="1400" loading="lazy" />
       </div>
@@ -206,75 +278,113 @@
     <div class="section__head reveal">
       <span class="eyebrow">Galería</span>
       <h2 class="display">Un recorrido por Aires de Mar</h2>
+      <p>Tocá cualquier foto para verla en grande.</p>
     </div>
-    <div class="bento reveal">
-      <figure class="b-tall"><img src="img/gal1.jpeg" alt="Piscina con reposeras entre los pinos" width="900" height="1200" loading="lazy" /></figure>
-      <figure class="b-wide"><img src="img/gal2.jpeg" alt="Entrada a una de las cabañas" width="1200" height="900" loading="lazy" /></figure>
-      <figure><img src="img/gal4.jpeg" alt="Deck de madera con mesa al aire libre" width="900" height="1200" loading="lazy" /></figure>
-      <figure class="b-wide"><img src="img/gal3.jpeg" alt="Galería con mesa y parrilla" width="1200" height="900" loading="lazy" /></figure>
-      <figure><img src="img/gal6.jpeg" alt="Dormitorio con vista al parque" width="900" height="1200" loading="lazy" /></figure>
-      <figure class="b-wide"><img src="img/gal5.jpeg" alt="Parque arbolado del predio" width="1200" height="900" loading="lazy" /></figure>
-      <figure><img src="img/gal7.jpeg" alt="Jardín con flores" width="900" height="1200" loading="lazy" /></figure>
-      <figure><img src="img/gal8.jpeg" alt="Galería exterior junto al bosque" width="900" height="1200" loading="lazy" /></figure>
+    <div class="bento gallery unveil reveal">
+      <figure class="b-tall" tabindex="0" role="button" aria-label="Ampliar foto: piscina con reposeras"><img src="img/gal1.jpeg" alt="Piscina con reposeras entre los pinos" width="900" height="1200" loading="lazy" /></figure>
+      <figure class="b-wide" tabindex="0" role="button" aria-label="Ampliar foto: entrada a una cabaña"><img src="img/gal2.jpeg" alt="Entrada a una de las cabañas" width="1200" height="900" loading="lazy" /></figure>
+      <figure tabindex="0" role="button" aria-label="Ampliar foto: deck de madera"><img src="img/gal4.jpeg" alt="Deck de madera con mesa al aire libre" width="900" height="1200" loading="lazy" /></figure>
+      <figure class="b-wide" tabindex="0" role="button" aria-label="Ampliar foto: galería con parrilla"><img src="img/gal3.jpeg" alt="Galería con mesa y parrilla" width="1200" height="900" loading="lazy" /></figure>
+      <figure tabindex="0" role="button" aria-label="Ampliar foto: dormitorio"><img src="img/gal6.jpeg" alt="Dormitorio con vista al parque" width="900" height="1200" loading="lazy" /></figure>
+      <figure class="b-wide" tabindex="0" role="button" aria-label="Ampliar foto: parque arbolado"><img src="img/gal5.jpeg" alt="Parque arbolado del predio" width="1200" height="900" loading="lazy" /></figure>
+      <figure tabindex="0" role="button" aria-label="Ampliar foto: jardín"><img src="img/gal7.jpeg" alt="Jardín con flores" width="900" height="1200" loading="lazy" /></figure>
+      <figure tabindex="0" role="button" aria-label="Ampliar foto: galería exterior"><img src="img/gal8.jpeg" alt="Galería exterior junto al bosque" width="900" height="1200" loading="lazy" /></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREGUNTAS FRECUENTES ============ -->
+<section class="section section--line" id="preguntas">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2 class="display">Lo que nos suelen preguntar</h2>
+    </div>
+    <div class="faq reveal">
+      <details><summary>¿Cómo reservo?</summary><div>Escribinos por mail con tus fechas, cuántas personas son y tus datos. Te respondemos con el presupuesto y los datos bancarios para la seña (20% en temporada alta, 30% en baja). El saldo se paga al llegar.</div></details>
+      <details><summary>¿Qué incluye el desayuno?</summary><div>Café, té, chocolate, leche, manteca, dulces, pan para tostadas y budines caseros. Lo dejamos provisto a diario en tu cabaña.</div></details>
+      <details><summary>¿Qué días se ingresa en temporada alta?</summary><div>Del 15 de diciembre al 10 de marzo las estadías son por semana completa. Dos cabañas ingresan los sábados y dos los domingos, así que según la fecha te ofrecemos la que corresponda.</div></details>
+      <details><summary>¿Cuántas personas entran por cabaña?</summary><div>Hasta 4: dormitorio con sommier matrimonial y sofá-cama para 2 en el living. Si son 5 o más, podemos ofrecerte dos cabañas.</div></details>
+      <details><summary>¿Puedo ir con mi mascota?</summary><div>Sí, mascotas pequeñas o medianas bien educadas. No pueden estar en el solárium ni quedarse solas en la cabaña.</div></details>
+      <details><summary>¿Qué tan lejos queda la playa?</summary><div>A 9 cuadras de la playa y a 6 del centro comercial de Mar de las Pampas, en Av. del Plata y El Palmar.</div></details>
     </div>
   </div>
 </section>
 
 <!-- ============ UBICACIÓN ============ -->
-<section class="section section--sand" id="ubicacion">
+<section class="section section--line" id="ubicacion">
   <div class="wrap">
     <div class="split">
       <div class="loc-card reveal">
         <span class="eyebrow">Ubicación</span>
         <h2 class="display">Mar de las Pampas</h2>
         <ul>
-          <li><span class="ic" aria-hidden="true">📍</span> Av. del Plata y El Palmar (continuación de Querandíes)</li>
-          <li><span class="ic" aria-hidden="true">🌊</span> A 9 cuadras de la playa</li>
-          <li><span class="ic" aria-hidden="true">🛍️</span> A 6 cuadras del centro comercial</li>
-          <li><span class="ic" aria-hidden="true">💬</span> <a data-wa="Hola! Quería consultar por las cabañas de Aires de Mar">WhatsApp +54 9 2255 62-5427</a></li>
+          <li><span aria-hidden="true">📍</span> Av. del Plata y El Palmar (continuación de Querandíes)</li>
+          <li><span aria-hidden="true">🌊</span> A 9 cuadras de la playa</li>
+          <li><span aria-hidden="true">🌲</span> En pleno bosque, a 6 cuadras del centro comercial</li>
+          <li><span aria-hidden="true">💬</span> <a data-wa="Hola! Quería consultar por las cabañas de Aires de Mar">WhatsApp +54 9 2255 62-5427</a></li>
         </ul>
-        <a class="btn btn--ghost" target="_blank" rel="noopener noreferrer"
-           href="https://www.google.com/maps/search/?api=1&amp;query=-37.3222014%2C-57.0336878">Cómo llegar <span class="arrow">›</span></a>
+        <a class="btn btn--mail" target="_blank" rel="noopener noreferrer"
+           href="https://www.google.com/maps/dir/?api=1&amp;destination=Caba%C3%B1as%20Aires%20de%20Mar%2C%20Mar%20de%20las%20Pampas">Cómo llegar <span class="arrow">›</span></a>
       </div>
-      <div class="reveal">
-        <iframe class="map-frame" title="Mapa de Aires de Mar en Mar de las Pampas" loading="lazy" referrerpolicy="no-referrer"
-          sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
-          src="https://www.google.com/maps?q=-37.3222014,-57.0336878&amp;z=16&amp;output=embed"></iframe>
-      </div>
+      <a class="map reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Caba%C3%B1as%20Aires%20de%20Mar%20Mar%20de%20las%20Pampas" target="_blank" rel="noopener noreferrer" aria-label="Abrir Aires de Mar en Google Maps">
+        <iframe title="Mapa de Aires de Mar en Mar de las Pampas" loading="lazy" referrerpolicy="no-referrer" tabindex="-1" aria-hidden="true"
+          sandbox="allow-scripts allow-same-origin"
+          src="https://www.google.com/maps?q=Caba%C3%B1as%20Aires%20de%20Mar%2C%20Mar%20de%20las%20Pampas&amp;z=15&amp;output=embed"></iframe>
+        <span class="map__cta">Abrir en Google Maps ↗</span>
+      </a>
     </div>
   </div>
 </section>
 </main>
 
 <!-- ============ FOOTER ============ -->
-<footer class="footer">
-  <div class="wrap">
-    <img class="footer__mark" src="img/logo-white.png" alt="Aires de Mar" width="480" height="91" loading="lazy" />
-    <div class="footer__grid">
-      <div>
-        <h3 class="footer__h">Explorar</h3>
-        <a href="#casas">Nuestras casas</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#reservas">Reservas</a>
-        <a href="#galeria">Galería</a>
-        <a href="#ubicacion">Ubicación</a>
-      </div>
-      <div>
-        <h3 class="footer__h">Contacto</h3>
-        <a data-wa="Hola! Quería consultar por las cabañas de Aires de Mar">WhatsApp +54 9 2255 62-5427</a>
-        <a data-mail="Consulta - Aires de Mar">Escribinos por mail</a>
-        <a href="https://www.instagram.com/airesdemarpampas/" target="_blank" rel="noopener noreferrer">Instagram @airesdemarpampas</a>
-      </div>
-      <div>
-        <h3 class="footer__h">Dónde estamos</h3>
-        <a href="https://www.google.com/maps/search/?api=1&amp;query=-37.3222014%2C-57.0336878" target="_blank" rel="noopener noreferrer">
-          Av. del Plata y El Palmar<br />Mar de las Pampas, Buenos Aires
-        </a>
-      </div>
+<footer class="footer" id="footer">
+  <div class="wrap footer__cta reveal">
+    <h2 class="display">Tu próxima escapada empieza <em>entre el bosque y el mar</em></h2>
+    <div class="footer__actions">
+      <a class="btn btn--gold" data-mail="Reserva - Aires de Mar">Pedí tu presupuesto <span class="arrow">›</span></a>
+      <a class="btn btn--light" data-wa="Hola! Quería consultar por las cabañas de Aires de Mar">WhatsApp <span class="arrow">›</span></a>
     </div>
-    <div class="footer__bottom">© <span id="year">2026</span> Aires de Mar · Cabañas de Playa en Mar de las Pampas · Desarrollado por <a href="https://automatizaciones-express.vercel.app/" target="_blank" rel="noopener noreferrer">AE</a></div>
+  </div>
+  <div class="wrap footer__grid">
+    <div class="footer__brand">
+      <img class="footer__mark" src="img/logo-white.png" alt="Aires de Mar" width="480" height="91" loading="lazy" />
+      <p>Cabañas de playa en Mar de las Pampas. Un complejo familiar, atendido por sus dueños.</p>
+    </div>
+    <div>
+      <h3 class="footer__h">Explorar</h3>
+      <a href="#casas">Nuestras casas</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#reservas">Reservas</a>
+      <a href="#preguntas">Preguntas</a>
+    </div>
+    <div>
+      <h3 class="footer__h">Contacto</h3>
+      <a data-wa="Hola! Quería consultar por las cabañas de Aires de Mar">WhatsApp</a>
+      <a data-mail="Consulta - Aires de Mar">Mail</a>
+      <a href="https://www.instagram.com/airesdemarpampas/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </div>
+    <div>
+      <h3 class="footer__h">Dónde estamos</h3>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Caba%C3%B1as%20Aires%20de%20Mar%20Mar%20de%20las%20Pampas" target="_blank" rel="noopener noreferrer">Av. del Plata y El Palmar<br />Mar de las Pampas</a>
+    </div>
+  </div>
+  <div class="wrap footer__bottom">
+    <span>© <span id="year">2026</span> Aires de Mar</span>
+    <span>Desarrollado por <a href="https://automatizaciones-express.vercel.app/" target="_blank" rel="noopener noreferrer">AE</a></span>
   </div>
 </footer>
+
+<!-- ============ VISOR DE FOTOS ============ -->
+<dialog class="lightbox" id="lightbox" aria-label="Foto ampliada">
+  <img src="data:," alt="" />
+  <button class="lb-close" type="button" aria-label="Cerrar">✕</button>
+  <button class="lb-prev" type="button" aria-label="Foto anterior">‹</button>
+  <button class="lb-next" type="button" aria-label="Foto siguiente">›</button>
+  <span class="lb-count"></span>
+</dialog>
 
 <!-- ============ FLOTANTES ============ -->
 <a class="wa-float" aria-label="Escribinos por WhatsApp" data-wa="Hola! Quería consultar por las cabañas de Aires de Mar 🌲🌊">
@@ -287,7 +397,7 @@
     <b>¿Listo para tu escapada?</b>
     <span>Consultá disponibilidad y precios sin cargo</span>
   </div>
-  <a class="btn btn--mail" data-mail="Consulta de disponibilidad y precios - Aires de Mar">Reservar <span class="arrow">›</span></a>
+  <a class="btn btn--gold" data-mail="Consulta de disponibilidad y precios - Aires de Mar">Reservar <span class="arrow">›</span></a>
 </div>
 
 <script src="app.js" defer></script>
