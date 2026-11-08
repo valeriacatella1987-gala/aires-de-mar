@@ -119,20 +119,22 @@ new IntersectionObserver(([e]) => bar.classList.toggle("show", !e.isIntersecting
 new IntersectionObserver(([e]) => document.body.classList.toggle("at-end", e.isIntersecting), { threshold: 0 })
   .observe(document.getElementById("footer"));
 
-/* Visor de fotos de la galería (<dialog> nativo) */
+/* Visor de fotos (<dialog> nativo): casas, servicios, equipamiento y galería */
 const lb = document.getElementById("lightbox");
 const lbImg = lb.querySelector("img");
 const lbCount = lb.querySelector(".lb-count");
-const shots = [...document.querySelectorAll(".bento figure")]; /* casas + galería */
-shots.forEach((fig) => {
-  fig.setAttribute("tabindex", "0");
-  fig.setAttribute("role", "button");
-  if (!fig.hasAttribute("aria-label")) fig.setAttribute("aria-label", `Ampliar foto: ${fig.querySelector("img").alt}`);
+const shots = [...document.querySelectorAll(".bento figure, .svc, .stack-imgs img")];
+const imgDe = (el) => (el.tagName === "IMG" ? el : el.querySelector("img"));
+shots.forEach((el) => {
+  el.dataset.zoom = "";
+  el.setAttribute("tabindex", "0");
+  el.setAttribute("role", "button");
+  if (!el.hasAttribute("aria-label")) el.setAttribute("aria-label", `Ampliar foto: ${imgDe(el).alt}`);
 });
 let current = 0;
 const show = (i) => {
   current = (i + shots.length) % shots.length;
-  const img = shots[current].querySelector("img");
+  const img = imgDe(shots[current]);
   lbImg.src = img.currentSrc || img.src;
   lbImg.alt = img.alt;
   lbCount.textContent = `${current + 1} / ${shots.length}`;
