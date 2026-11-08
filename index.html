@@ -399,6 +399,28 @@
   </div>
 </dialog>
 
+<!-- ============ CHAT WEB (responde Vale, el mismo agente de WhatsApp) ============ -->
+<button class="chat-fab" id="chatFab" type="button" aria-controls="chatPanel" aria-expanded="false" aria-label="Abrir el chat con Vale">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 012 2v10a2 2 0 01-2 2H9l-5 4v-4a2 2 0 01-2-2V6a2 2 0 012-2zm3 6.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm5 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm5 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/></svg>
+  <span class="chat-fab__txt">Chateá con Vale</span>
+</button>
+<section class="chat" id="chatPanel" role="dialog" aria-modal="false" aria-labelledby="chatTitle" hidden>
+  <header class="chat__head">
+    <span class="chat__avatar" aria-hidden="true">V</span>
+    <div><b id="chatTitle">Vale · Aires de Mar</b><span>Te responde en el momento</span></div>
+    <button class="chat__close" type="button" aria-label="Cerrar el chat">×</button>
+  </header>
+  <ol class="chat__log" id="chatLog" aria-live="polite">
+    <li class="chat__note">Escribí tu consulta: fechas, cuántas personas, mascotas… lo que necesites.</li>
+  </ol>
+  <form class="chat__form" id="chatForm">
+    <label class="sr-only" for="chatInput">Tu mensaje</label>
+    <textarea id="chatInput" rows="1" maxlength="600" placeholder="Escribí tu mensaje…" required></textarea>
+    <button type="submit" aria-label="Enviar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20.5l18-8.5L3 3.5 3 10l12 2-12 2z"/></svg></button>
+  </form>
+  <a class="chat__wa" data-wa="Hola! Vi la web y quería consultar por las cabañas de Aires de Mar">Prefiero seguir por WhatsApp</a>
+</section>
+
 <!-- ============ FLOTANTES ============ -->
 <a class="wa-float" aria-label="Escribinos por WhatsApp" data-wa="Hola! Vi la web y quería consultar por las cabañas de Aires de Mar">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.05 24l1.7-6.2A11.9 11.9 0 1112 24a11.9 11.9 0 01-5.9-1.6L.05 24zM6.6 20.1l.4.2a9.9 9.9 0 005 1.4A9.9 9.9 0 102.1 12c0 1.8.5 3.5 1.4 5l.2.4-1 3.7 3.9-1zm11.4-5.5c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.1-.3.2-.5.1a8 8 0 01-2.4-1.5 9 9 0 01-1.6-2c-.2-.3 0-.4.1-.6l.5-.5.3-.5v-.5c0-.1-.6-1.5-.8-2-.2-.5-.5-.5-.6-.5h-.5c-.2 0-.5 0-.7.3a3 3 0 00-1 2.2c0 1.3 1 2.6 1.1 2.8.1.2 1.9 3 4.6 4.2.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>

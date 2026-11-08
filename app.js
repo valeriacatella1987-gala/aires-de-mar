@@ -159,4 +159,110 @@ lb.addEventListener("touchend", (e) => {
   touchX = null;
 });
 
+/* Chat web: lo contesta Vale, el mismo agente de WhatsApp, a través de /api/chat.
+   La sesión y el historial quedan en este navegador (si el almacenamiento falla, igual anda). */
+const chat = document.getElementById("chatPanel");
+const fab = document.getElementById("chatFab");
+const log = document.getElementById("chatLog");
+const form = document.getElementById("chatForm");
+const input = document.getElementById("chatInput");
+const store = {
+  get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* sin almacenamiento */ } },
+};
+let sid = store.get("aires_chat_sid", "");
+if (!/^[A-Za-z0-9-]{16,64}$/.test(sid)) {
+  sid = (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2)).replace(/[^A-Za-z0-9-]/g, "");
+  store.set("aires_chat_sid", sid);
+}
+let historial = store.get("aires_chat_log", []);
+let vistos = new Set(historial.map((m) => m.id).filter(Boolean));
+let desde = store.get("aires_chat_since", new Date(Date.now() - 60000).toISOString());
+let poller = null;
+let typing = null;
+
+const burbuja = (texto, quien) => {
+  const li = document.createElement("li");
+  li.className = quien === "me" ? "chat__me" : "chat__bot";
+  /* texto plano + links clickeables, sin innerHTML */
+  String(texto).split(/(https?:\/\/[^\s]+)/g).forEach((parte, i) => {
+    if (i % 2) {
+      const a = document.createElement("a");
+      const esWa = parte.includes("wa.me/");
+      a.href = parte; a.target = "_blank"; a.rel = "noopener noreferrer";
+      a.textContent = esWa ? "Seguir por WhatsApp" : parte.replace(/^https?:\/\//, "").slice(0, 40);
+      li.append(a);
+    } else li.append(parte);
+  });
+  log.insertBefore(li, typing && typing.isConnected ? typing : null);
+  log.scrollTop = log.scrollHeight;
+};
+historial.forEach((m) => burbuja(m.text, m.who));
+
+const escribiendo = (on) => {
+  if (on && !typing) {
+    typing = document.createElement("li");
+    typing.className = "chat__typing";
+    typing.setAttribute("aria-label", "Vale está escribiendo");
+    typing.innerHTML = "<i></i><i></i><i></i>";
+    log.append(typing);
+    log.scrollTop = log.scrollHeight;
+  } else if (!on && typing) { typing.remove(); typing = null; }
+};
+const guardar = (m) => { historial = [...historial, m].slice(-60); store.set("aires_chat_log", historial); };
+
+const leer = async () => {
+  try {
+    const r = await fetch(`/api/chat?sid=${encodeURIComponent(sid)}&since=${encodeURIComponent(desde)}`);
+    if (!r.ok) return 0;
+    const { messages = [] } = await r.json();
+    let nuevos = 0;
+    messages.forEach((m) => {
+      if (vistos.has(m.id)) return;
+      vistos.add(m.id); nuevos++;
+      escribiendo(false);
+      burbuja(m.text, "bot"); guardar({ id: m.id, text: m.text, who: "bot" });
+      if (m.at > desde) { desde = m.at; store.set("aires_chat_since", desde); }
+    });
+    return nuevos;
+  } catch { return 0; }
+};
+/* después de mandar, se pregunta cada 3 s durante 2 minutos */
+const esperarRespuesta = () => {
+  clearInterval(poller);
+  const fin = Date.now() + 120000;
+  poller = setInterval(async () => {
+    if (await leer() || Date.now() > fin) { clearInterval(poller); escribiendo(false); }
+  }, 3000);
+};
+
+const abrirChat = (open) => {
+  chat.hidden = !open;
+  fab.setAttribute("aria-expanded", String(open));
+  if (open) { input.focus(); leer(); } else fab.focus();
+};
+fab.addEventListener("click", () => abrirChat(true));
+chat.querySelector(".chat__close").addEventListener("click", () => abrirChat(false));
+chat.addEventListener("keydown", (e) => { if (e.key === "Escape") abrirChat(false); });
+input.addEventListener("input", () => { input.style.height = "auto"; input.style.height = `${input.scrollHeight}px`; });
+input.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); } });
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const text = input.value.trim();
+  if (!text) return;
+  const btn = form.querySelector("button");
+  btn.disabled = true;
+  burbuja(text, "me"); guardar({ text, who: "me" });
+  input.value = ""; input.style.height = "auto";
+  escribiendo(true);
+  try {
+    const r = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sid, text }) });
+    if (!r.ok) throw new Error(String(r.status));
+    esperarRespuesta();
+  } catch {
+    escribiendo(false);
+    burbuja("No pudimos enviar tu mensaje. Probá de nuevo o escribinos por WhatsApp.", "bot");
+  } finally { btn.disabled = false; }
+});
+
 document.getElementById("year").textContent = new Date().getFullYear();
