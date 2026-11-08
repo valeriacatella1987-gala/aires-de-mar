@@ -1,4 +1,8 @@
+.vercel
 CREDENTIALS.md
+*.md
 .env
 .env.*
 .git
+.gitignore
+.vercelignore

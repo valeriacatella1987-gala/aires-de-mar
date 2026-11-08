@@ -10,7 +10,7 @@ document.querySelectorAll("[data-wa]").forEach((el) => {
   const msg = encodeURIComponent(el.getAttribute("data-wa") || "");
   el.setAttribute("href", `https://wa.me/${WA_NUMBER}?text=${msg}`);
   el.setAttribute("target", "_blank");
-  el.setAttribute("rel", "noopener");
+  el.setAttribute("rel", "noopener noreferrer");
 });
 
 /* Mail de contacto, armado en JS (no queda como texto plano en el HTML)

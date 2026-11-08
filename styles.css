@@ -35,7 +35,7 @@
   --text-h2:   clamp(1.9rem, 1.2rem + 2.4vw, 3.2rem);
   --text-lead: clamp(1.05rem, 0.98rem + 0.4vw, 1.25rem);
 
-  --space-section: clamp(4rem, 3rem + 5vw, 8.5rem);
+  --space-section: clamp(3rem, 2rem + 3.5vw, 6rem);
   --radius: 18px;
   --radius-lg: 26px;
   --maxw: 1200px;
@@ -84,8 +84,9 @@ h1, h2, h3 { line-height: 1.05; font-weight: 500; }
   transition: transform var(--dur) var(--ease);
 }
 .btn:hover .arrow { transform: translateX(3px); }
-.btn--wa   { --_bg: var(--wa); --_fg: #063; color:#053d1c; }
-.btn--wa:hover { background: var(--wa-dark); }
+.btn--mail { --_bg: var(--forest-700); --_fg: #fff; }
+.btn--mail:hover { background: var(--forest-900); }
+.btn--mail .arrow { background: rgba(255,255,255,.16); }
 .btn--ghost { --_bg: transparent; --_fg: var(--ink); border: 1.5px solid rgba(30,30,30,.25); }
 .btn--ghost .arrow { background: rgba(30,30,30,.08); }
 .btn--light { --_bg: rgba(255,255,255,.14); --_fg:#fff; border:1.5px solid rgba(255,255,255,.4); backdrop-filter: blur(6px); }
@@ -103,7 +104,8 @@ h1, h2, h3 { line-height: 1.05; font-weight: 500; }
   box-shadow: 0 1px 0 rgba(30,30,30,.08);
   padding-block: .7rem;
 }
-.nav__brand { position: relative; display: block; width: 132px; height: 25px; }
+.nav__brand { position: relative; display: block; width: 200px; height: 38px; }
+@media (max-width: 560px){ .nav__brand { width: 160px; height: 30px; } }
 .nav__logo {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: left center;
   transition: opacity .35s;
@@ -144,7 +146,7 @@ h1, h2, h3 { line-height: 1.05; font-weight: 500; }
 .section--sand { background: var(--sand-100); }
 .section--sand-50 { background: var(--sand-50); }
 .section--forest { background: var(--forest-700); color: var(--sand-50); }
-.section__head { max-width: 720px; margin-bottom: clamp(2rem,4vw,3.5rem); }
+.section__head { max-width: 720px; margin-bottom: clamp(1.5rem,3vw,2.5rem); }
 .section__head h2 { font-size: var(--text-h2); margin-top: .5rem; letter-spacing: -.01em; text-wrap: balance; }
 .section__head p { margin-top: 1rem; font-size: var(--text-lead); color: color-mix(in srgb, var(--ink) 78%, transparent); }
 .section--forest .section__head p { color: rgba(250,246,238,.85); }
@@ -152,8 +154,8 @@ h1, h2, h3 { line-height: 1.05; font-weight: 500; }
 @media (min-width: 860px){ .split { grid-template-columns: 1.05fr .95fr; } .split--rev > :first-child { order: 2; } }
 
 /* ---------- Concept intro ---------- */
-.concept { text-align: center; }
-.concept p { font-family: var(--font-display); font-size: clamp(1.4rem,1rem+2vw,2.4rem); line-height: 1.3; max-width: 22ch; margin-inline: auto; color: var(--brown-900); text-wrap: balance; }
+.concept { text-align: center; padding-block: clamp(2.5rem, 1.5rem + 3vw, 4.5rem); }
+.concept p { font-family: var(--font-display); font-size: clamp(1.5rem, 1rem + 2vw, 2.4rem); line-height: 1.3; max-width: 30ch; margin-inline: auto; color: var(--brown-900); text-wrap: balance; }
 .concept p span { color: var(--tan-600); }
 
 /* ---------- Casas / bento ---------- */
@@ -170,11 +172,12 @@ h1, h2, h3 { line-height: 1.05; font-weight: 500; }
   .bento .b-wide { grid-column: span 2; }
   .bento .b-tall { grid-row: span 1; }
 }
-.casa-copy h3 { font-family: var(--font-display); font-size: clamp(1.6rem,1.2rem+1.4vw,2.3rem); font-weight:400; }
+.casa-copy h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.3rem); font-weight:400; }
 .casa-copy .cap { display:inline-flex; align-items:center; gap:.5rem; margin-top:1.2rem; padding:.5rem .9rem; border-radius:100px; background:var(--sand-200); font-weight:600; font-size:.9rem; }
 
 /* ---------- Amenities grid ---------- */
-.amenities { columns: 2; column-gap: 2.5rem; }
+.amenities { columns: 1; column-gap: 2.5rem; }
+@media (min-width: 560px){ .amenities { columns: 2; } }
 @media (min-width: 760px){ .amenities { columns: 3; } }
 .amenities li {
   break-inside: avoid; list-style: none; padding: .55rem 0 .55rem 1.7rem; position: relative;
@@ -207,7 +210,7 @@ h1, h2, h3 { line-height: 1.05; font-weight: 500; }
 .check span { font-size: .85rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
 .tblock .stack-imgs { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 .tblock .stack-imgs img { border-radius: var(--radius); height: 100%; object-fit: cover; aspect-ratio: 3/4; }
-.tblock .stack-imgs img:first-child { margin-top: 2rem; }
+.tblock .stack-imgs img:first-child { margin-top: 1.25rem; }
 
 /* ---------- Ubicación ---------- */
 .map-frame { border: 0; width: 100%; height: 100%; min-height: 340px; border-radius: var(--radius-lg); filter: saturate(.9); }
@@ -217,14 +220,14 @@ h1, h2, h3 { line-height: 1.05; font-weight: 500; }
 .loc-card .ic { color: var(--forest-500); }
 
 /* ---------- Footer ---------- */
-.footer { background: var(--ink); color: var(--sand-50); padding-top: clamp(3rem,6vw,5rem); }
-.footer__mark { display: block; width: min(78%, 520px); margin: 0 auto; padding-bottom: 2rem; opacity: .96; }
-.footer__grid { display: grid; gap: 2rem; grid-template-columns: 1fr; padding: 2.5rem 0; border-top: 1px solid rgba(255,255,255,.12); }
+.footer { background: var(--ink); color: var(--sand-50); padding-top: clamp(2.5rem,5vw,4rem); }
+.footer__mark { display: block; width: min(70%, 420px); margin: 0 auto; padding-bottom: 1.5rem; opacity: .96; }
+.footer__grid { display: grid; gap: 1.5rem; grid-template-columns: 1fr; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,.12); }
 @media (min-width: 720px){ .footer__grid { grid-template-columns: repeat(3, 1fr); } }
-.footer h4 { font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; color: var(--tan-400); margin-bottom:.9rem; }
+.footer__h { font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; color: var(--tan-400); margin-bottom:.9rem; }
 .footer a { opacity: .85; display:block; padding:.2rem 0; }
 .footer a:hover { opacity: 1; }
-.footer__bottom { text-align:center; padding: 1.5rem 0 6rem; font-size:.82rem; opacity:.6; }
+.footer__bottom { text-align:center; padding: 1.25rem 0 5.5rem; font-size:.82rem; opacity:.6; }
 .footer__bottom a { display: inline; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- Floating WhatsApp ---------- */
@@ -269,5 +272,34 @@ h1, h2, h3 { line-height: 1.05; font-weight: 500; }
   }
   .nav__links.open { transform: none; }
   .nav__links a, .nav.scrolled .nav__links a { color: #fff; font-size: 1.15rem; }
-  .nav__links .btn { color: #053d1c; }
+  .nav__links .btn { background: var(--sand-50); color: var(--forest-900); }
+}
+
+/* ---------- Clases que reemplazan los style="" inline (la CSP no permite estilos inline) ---------- */
+.casa-copy p { margin-top: 1.1rem; color: color-mix(in srgb, var(--ink) 78%, transparent); }
+.casa-copy .note { margin-top: .6rem; font-size: .95rem; }
+.section--bleed { padding-inline: 0; }
+.tblock .eyebrow { color: var(--brown-900); }
+.tblock .rules { margin-top: 1.4rem; max-width: 52ch; display: grid; gap: .55rem; padding: 0; list-style: none; }
+.tblock .rules li { padding-left: 1.2rem; position: relative; }
+.tblock .rules li::before { content: "·"; position: absolute; left: .3rem; font-weight: 700; }
+.mt-btn { margin-top: 1.6rem; }
+.loc-card h2 { font-size: var(--text-h2); margin-top: .4rem; }
+.loc-card .btn { margin-top: 1.5rem; }
+
+/* ---------- Menú: hamburguesa → X ---------- */
+.nav__toggle[aria-expanded="true"] span:nth-child(1){ top: 10px; transform: rotate(45deg); }
+.nav__toggle[aria-expanded="true"] span:nth-child(2){ opacity: 0; }
+.nav__toggle[aria-expanded="true"] span:nth-child(3){ top: 10px; transform: rotate(-45deg); }
+.nav__toggle { z-index: 2; }
+
+/* ---------- Celular: barra fija compacta, WhatsApp sin pisarla ---------- */
+@media (max-width: 560px){
+  .reserva-bar { padding-block: .55rem; }
+  .reserva-bar__txt span { display: none; }
+  .reserva-bar__txt b { font-size: .98rem; }
+  .wa-float { width: 52px; height: 52px; bottom: 4.6rem; right: .9rem; }
+  .checks { gap: .8rem; }
+  .check { min-width: 0; flex: 1; padding: .9rem 1rem; }
+  .svc { height: 360px; }
 }
