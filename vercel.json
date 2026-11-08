@@ -1,8 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "redirects": [
-    { "source": "/:path*", "has": [{ "type": "host", "value": "aires-de-mar.vercel.app" }], "destination": "https://airesdemarpampas.com.ar/:path*", "permanent": true }
-  ],
   "headers": [
     {
       "source": "/(.*)",
