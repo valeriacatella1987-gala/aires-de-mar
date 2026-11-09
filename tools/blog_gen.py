@@ -79,7 +79,7 @@ NOTAS = [
     "corta": "En <b>Cabañas Aires de Mar</b> la temporada alta va del <b>15 de diciembre al 10 de marzo</b> y se alquila <b>solo por semanas completas</b> (7, 14 o 21 noches). Según la cabaña, el ingreso es <b>sábado o domingo</b>. El resto del año se pueden hacer estadías más cortas.",
     "secciones": [
       ("Seña y saldo en temporada alta", [
-        "La reserva se confirma con una seña del <b>20%</b>. El saldo se fija en dólares al blue del día y se paga al ingresar, en efectivo (dólares o pesos).",
+        "La reserva se confirma con una seña del <b>20%</b>. El saldo se abona al llegar, en efectivo.",
       ]),
       ("Y en temporada baja", [
         "La seña es del <b>30%</b> y el saldo se paga al ingresar, en efectivo en pesos. El mínimo de noches depende de la fecha.",
@@ -124,7 +124,7 @@ NOTAS = [
         "1) Mandás fechas de entrada y salida y cuántos son. 2) Te responden con el valor exacto: no hay tarifa publicada porque depende de las fechas y la cantidad de personas. 3) Para confirmar, pedís la reserva por mail con tus datos y te pasan la cuenta para la seña.",
       ]),
       ("El saldo", [
-        "Temporada alta: se fija en dólares al blue del día y se paga al ingresar en efectivo (dólares o pesos). Temporada baja: al ingresar, en efectivo en pesos.",
+        "El saldo se abona al llegar, en efectivo.",
       ]),
     ],
     "faq": [
@@ -282,7 +282,7 @@ llms = [f"# Cabañas Aires de Mar (Mar de las Pampas, Argentina)", "",
         "- Capacidad: hasta 4 personas por cabaña (dormitorio con sommier matrimonial + sofá-cama en el living). Sin camas extra.",
         "- Incluye: desayuno provisto a diario para preparar en la cabaña, limpieza diaria, cambio de toallas día por medio y de sábanas a mitad de semana, WiFi, aire acondicionado frío-calor, baño con hidromasaje, parrilla individual, piscina y solárium descubiertos, juegos infantiles, estacionamiento.",
         "- Mascotas: pequeñas y medianas, educadas; no pueden quedar solas en la cabaña ni entrar al solárium.",
-        "- Temporada alta (15/12 al 10/3): solo semanas completas (7, 14 o 21 noches), ingreso sábado o domingo. Seña 20%, saldo en dólares al blue al ingresar.",
+        "- Temporada alta (15/12 al 10/3): solo semanas completas (7, 14 o 21 noches), ingreso sábado o domingo. Seña 20%, saldo en efectivo al llegar.",
         "- Temporada baja: estadías más cortas; seña 30%, saldo en pesos al ingresar.",
         "- Horarios: ingreso desde las 15 h, salida 10 h.",
         "- Precio: sin tarifa publicada; depende de fechas y cantidad de personas.",
