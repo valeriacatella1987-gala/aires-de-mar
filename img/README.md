@@ -53,3 +53,6 @@ Subieron una tanda nueva y mucho mejor organizada en `D:\FOTOS AIRES DE MAR\` (c
 **Logo:** agregué `logo-color.png` (versión azul/verde, para el nav una vez que hacés scroll) y `logo-white.png` (versión blanca, para el nav transparente sobre la portada y el footer oscuro) — reemplazan el texto "Aires de Mar" del nav. `logo.jpg` (ícono de pestaña) también se regeneró a partir del logo nuevo.
 
 Quedan ~24 fotos sin usar en la carpeta nueva por si quieren ampliar la galería.
+
+## Actualización 2026-11-10 — fotos renovadas con IA
+Todas las fotos del sitio salen ahora de `D:\FOTOS AIRES DE MAR IA\`. Portada (`hero.jpeg`) = "Viga de estuco limpia junto a la piscina". Mapeo en `fotos.py` del scratchpad de la sesión; resumen: casa1=IMG_9231 fiel, interior1=IMG_9339 fiel_v3, casa2=Salón contemporáneo, casa3/parque2=Dormitorios, interior2=Cocina, interior3=Baño, piscina1=Piscina bajo sombrillas, piscina2=Jardín natural con piscina, parque1=Patio con barbacoa, casa4=Parque infantil, gal1..gal8=Agapantos, entrada (WhatsApp), Terraza barbacoa, Patio muebles blancos, Casa entre árboles, Dormitorio ventana verde, Balcón, Jardín desde la terraza.
