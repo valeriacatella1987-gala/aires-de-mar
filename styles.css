@@ -39,7 +39,8 @@
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); -webkit-text-size-adjust: 100%; }
-body { font-family: var(--font-body); color: var(--ink); background: var(--cream); line-height: 1.6; overflow-x: hidden; }
+body { font-family: var(--font-body); color: var(--ink); background: var(--cream); line-height: 1.6; overflow-x: hidden; overflow-x: clip; }
+html { overflow-x: clip; } /* ponytail: clip (no hidden) para que el teclado del celu no corra la página de costado */
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3 { line-height: 1.05; font-weight: 400; }
@@ -176,7 +177,8 @@ h1, h2, h3 { line-height: 1.05; font-weight: 400; }
 .bento .b-big  { grid-column: span 2; grid-row: span 2; }
 @media (max-width: 720px){
   .bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; }
-  .bento .b-tall { grid-row: span 1; }
+  .bento { grid-auto-flow: dense; }
+  .bento .b-tall { grid-row: span 1; grid-column: span 2; }
 }
 .casa-copy h2 { font-size: clamp(1.7rem, 1.2rem + 1.6vw, 2.5rem); margin-top: .7rem; }
 .casa-copy p { margin-top: 1.1rem; color: var(--muted); }
@@ -444,7 +446,7 @@ body.at-end .chat-fab { opacity: 0; transform: scale(.6); pointer-events: none; 
 .chat__wa:hover { text-decoration: underline; }
 @media (max-width: 760px) {
   .chat-fab { width: 52px; height: 52px; bottom: 8.6rem; right: .9rem; }
-  .chat { right: .5rem; left: .5rem; bottom: .5rem; width: auto; height: min(80vh, 620px); }
+  .chat { right: .5rem; left: .5rem; bottom: .5rem; width: auto; height: min(80vh, 620px); height: min(80dvh, 620px); max-width: calc(100vw - 1rem); }
 }
 @media (prefers-reduced-motion: reduce) { .chat, .chat__typing i, .chat-fab::before, .chat__tool { animation: none !important; } }
 
